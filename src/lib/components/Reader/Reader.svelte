@@ -319,23 +319,27 @@
         style:margin-left={`${$settings.edgeButtonWidth}px`}
         on:mousedown={mouseDown}
         on:mouseup={left}
-      />
+        aria-label="Turn page left"
+      ></button>
       <button
         class="h-full fixed -right-full z-10 w-full hover:bg-slate-400 opacity-[0.01]"
         style:margin-right={`${$settings.edgeButtonWidth}px`}
         on:mousedown={mouseDown}
         on:mouseup={right}
-      />
+        aria-label="Turn page right"
+      ></button>
       <button
         class="h-screen fixed top-full -left-full z-10 w-[150%] hover:bg-slate-400 opacity-[0.01]"
         on:mousedown={mouseDown}
         on:mouseup={left}
-      />
+        aria-label="Turn page left"
+      ></button>
       <button
         class="h-screen fixed top-full -right-full z-10 w-[150%] hover:bg-slate-400 opacity-[0.01]"
         on:mousedown={mouseDown}
         on:mouseup={right}
-      />
+        aria-label="Turn page right"
+      ></button>
       <div
         class="flex flex-row"
         class:flex-row-reverse={!volumeSettings.rightToLeft}
@@ -359,13 +363,15 @@
       on:mouseup={left}
       class="left-0 top-0 absolute h-full w-16 hover:bg-slate-400 opacity-[0.01]"
       style:width={`${$settings.edgeButtonWidth}px`}
-    />
+      aria-label="Turn page left"
+    ></button>
     <button
       on:mousedown={mouseDown}
       on:mouseup={right}
       class="right-0 top-0 absolute h-full w-16 hover:bg-slate-400 opacity-[0.01]"
       style:width={`${$settings.edgeButtonWidth}px`}
-    />
+      aria-label="Turn page right"
+    ></button>
   {/if}
 {:else}
   <div class="fixed z-50 left-1/2 top-1/2">

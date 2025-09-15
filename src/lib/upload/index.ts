@@ -27,7 +27,7 @@ export async function unzipManga(file: File) {
     const mime = getMimeType(entry.filename);
     const isMokuroFile = entry.filename.split('.').pop() === 'mokuro'
 
-    if (imageTypes.includes(mime) || isMokuroFile) {
+    if (!entry.directory && (imageTypes.includes(mime) || isMokuroFile)) {
       const blob = await entry.getData?.(new BlobWriter(mime));
       if (blob) {
         const fileName = entry.filename.split('/').pop() || entry.filename;
