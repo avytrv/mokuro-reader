@@ -14,11 +14,13 @@
 </script>
 
 <AccordionItem open>
-  <span slot="header">Volume defaults</span>
+  {#snippet header()}
+    Volume defaults
+  {/snippet}
   <div class="flex flex-col gap-5">
     <Helper>The default settings that are applied when you start a new volume</Helper>
     {#each toggles as { key, text, value }}
-      <Toggle size="small" checked={value} on:change={() => updateVolumeDefaults(key, !value)}
+      <Toggle size="small" checked={value} onchange={() => updateVolumeDefaults(key, !value)}
         >{text}</Toggle
       >
     {/each}

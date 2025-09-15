@@ -19,5 +19,5 @@
 </script>
 
 {#each toggles as { key, text, value }}
-  <Toggle size="small" checked={value} on:change={() => updateSetting(key, !value)}>{text}</Toggle>
+  <Toggle size="small" checked={value} onchange={() => updateSetting(key, !value)}>{text}</Toggle>
 {/each}

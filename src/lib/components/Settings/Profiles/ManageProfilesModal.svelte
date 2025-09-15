@@ -10,12 +10,11 @@
   import { Listgroup, ListgroupItem, Modal, Input } from 'flowbite-svelte';
   import {
     CirclePlusSolid,
-    CopySolid,
     EditOutline,
+    FileCopySolid,
     TrashBinSolid,
     UserEditSolid
   } from 'flowbite-svelte-icons';
-  import type { ListGroupItemType } from 'flowbite-svelte/dist/types';
 
   export let open = false;
 
@@ -38,7 +37,7 @@
     newProfile = '';
   }
 
-  function onCopy(item: string | ListGroupItemType) {
+  function onCopy(item: string) {
     let newCopy = `${item} copy`;
 
     while (items.includes(newCopy)) {
@@ -48,16 +47,16 @@
     copyProfile(item as string, newCopy);
   }
 
-  function onDelete(item: string | ListGroupItemType) {
+  function onDelete(item: string) {
     promptConfirmation(`Are you sure you would like to delete the [${item}] profile?`, () => {
       deleteProfile(item as string);
     });
   }
 
-  let profileToEdit: string | ListGroupItemType;
-  let newName: string | ListGroupItemType;
+  let profileToEdit: string;
+  let newName: string;
 
-  function onEditClicked(item: string | ListGroupItemType) {
+  function onEditClicked(item: string) {
     if (profileToEdit) {
       profileToEdit = '';
     } else {
@@ -81,40 +80,45 @@
 </script>
 
 <Modal size="xs" bind:open outsideclose>
-  <Listgroup {items} let:item>
-    <ListgroupItem class="flex flex-row justify-between gap-6">
-      <div class="flex-1">
-        {#if profileToEdit === item}
-          <form on:submit|preventDefault={onEdit}>
-            <Input size="sm" bind:value={newName} autofocus on:click={onInputClick}>
-              <EditOutline
-                slot="right"
-                size="sm"
-                on:click={onEdit}
-                class="hover:text-primary-700"
-              />
-            </Input>
-          </form>
-        {:else}
-          <p class="line-clamp-1">{item}</p>
-        {/if}
-      </div>
-      <div class="flex flex-row gap-2 items-center">
-        <CopySolid size="sm" class="hover:text-primary-700" on:click={() => onCopy(item)} />
-        {#if item !== 'Default'}
-          <UserEditSolid
-            size="sm"
-            class="hover:text-primary-700"
-            on:click={() => onEditClicked(item)}
-          />
-          <TrashBinSolid size="sm" class="hover:text-primary-700" on:click={() => onDelete(item)} />
-        {/if}
-      </div>
-    </ListgroupItem>
+  <Listgroup>
+    {#each items as item}
+      <ListgroupItem class="flex flex-row justify-between gap-6">
+        <div class="flex-1">
+          {#if profileToEdit === item}
+            <form on:submit|preventDefault={onEdit}>
+              <Input size="sm" bind:value={newName} autofocus onclick={onInputClick}>
+                {#snippet right()}
+                  <EditOutline
+                      size="sm"
+                      onclick={onEdit}
+                      class="hover:text-primary-700"
+                    />
+                {/snippet}
+              </Input>
+            </form>
+          {:else}
+            <p class="line-clamp-1">{item}</p>
+          {/if}
+        </div>
+        <div class="flex flex-row gap-2 items-center">
+          <FileCopySolid size="sm" class="hover:text-primary-700" onclick={() => onCopy(item)} />
+          {#if item !== 'Default'}
+            <UserEditSolid
+              size="sm"
+              class="hover:text-primary-700"
+              onclick={() => onEditClicked(item)}
+            />
+            <TrashBinSolid size="sm" class="hover:text-primary-700" onclick={() => onDelete(item)} />
+          {/if}
+        </div>
+      </ListgroupItem>
+    {/each}
   </Listgroup>
   <form on:submit|preventDefault={onSubmit}>
     <Input type="text" placeholder="New profile..." bind:value={newProfile}>
-      <CirclePlusSolid slot="right" class="hover:text-primary-700" on:click={onSubmit} />
+      {#snippet right()}
+        <CirclePlusSolid class="hover:text-primary-700" onclick={onSubmit} />
+      {/snippet}
     </Input>
   </form>
 </Modal>

@@ -21,7 +21,7 @@
     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
       {$confirmationPopupStore?.message}
     </h3>
-    <Button color="red" class="mr-2" on:click={$confirmationPopupStore?.onConfirm}>Yes</Button>
-    <Button color="alternative" on:click={$confirmationPopupStore?.onCancel}>No</Button>
+    <Button color="red" class="mr-2" onclick={$confirmationPopupStore?.onConfirm}>Yes</Button>
+    <Button color="alternative" onclick={$confirmationPopupStore?.onCancel}>No</Button>
   </div>
 </Modal>

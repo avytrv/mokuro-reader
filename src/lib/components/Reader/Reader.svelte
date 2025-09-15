@@ -12,10 +12,10 @@
   import { Input, Popover, Range, Spinner } from 'flowbite-svelte';
   import MangaPage from './MangaPage.svelte';
   import {
-    ChervonDoubleLeftSolid,
-    ChervonDoubleRightSolid,
-    ChevronLeftSolid,
-    ChevronRightSolid
+    ChevronDoubleLeftOutline,
+    ChevronDoubleRightOutline,
+    ChevronLeftOutline,
+    ChevronRightOutline
   } from 'flowbite-svelte-icons';
   import Cropper from './Cropper.svelte';
   import { page as pageStore } from '$app/stores';
@@ -270,13 +270,13 @@
   <Popover placement="bottom" trigger="click" triggeredBy="#page-num" class="z-20 w-full max-w-xs">
     <div class="flex flex-col gap-3">
       <div class="flex flex-row items-center gap-5 z-10">
-        <ChervonDoubleLeftSolid
-          on:click={() => changePage(volumeSettings.rightToLeft ? pages.length : 1, true)}
+        <ChevronDoubleLeftOutline
+          onclick={() => changePage(volumeSettings.rightToLeft ? pages.length : 1, true)}
           class="hover:text-primary-600"
           size="sm"
         />
-        <ChevronLeftSolid
-          on:click={(e) => left(e, true)}
+        <ChevronLeftOutline
+          onclick={(e) => left(e, true)}
           class="hover:text-primary-600"
           size="sm"
         />
@@ -284,16 +284,16 @@
           type="number"
           size="sm"
           bind:value={manualPage}
-          on:click={onInputClick}
-          on:change={onManualPageChange}
+          onclick={onInputClick}
+          onchange={onManualPageChange}
         />
-        <ChevronRightSolid
-          on:click={(e) => right(e, true)}
+        <ChevronRightOutline
+          onclick={(e) => right(e, true)}
           class="hover:text-primary-600"
           size="sm"
         />
-        <ChervonDoubleRightSolid
-          on:click={() => changePage(volumeSettings.rightToLeft ? 1 : pages.length, true)}
+        <ChevronDoubleRightOutline
+          onclick={() => changePage(volumeSettings.rightToLeft ? 1 : pages.length, true)}
           class="hover:text-primary-600"
           size="sm"
         />
@@ -303,8 +303,7 @@
           min={1}
           max={pages.length}
           bind:value={manualPage}
-          on:change={onManualPageChange}
-          defaultClass=""
+          onchange={onManualPageChange}
         />
       </div>
     </div>

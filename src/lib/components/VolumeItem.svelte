@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import { deleteVolume, progress } from '$lib/settings';
   import type { Volume } from '$lib/types';
   import { promptConfirmation } from '$lib/util';
-  import { ListgroupItem, Frame } from 'flowbite-svelte';
+  import { ListgroupItem } from 'flowbite-svelte';
   import { CheckCircleSolid, TrashBinSolid } from 'flowbite-svelte-icons';
   import { goto } from '$app/navigation';
   import { db } from '$lib/catalog/db';
@@ -34,7 +34,7 @@
       deleteVolume(volume_uuid);
       if (updated && updated.length > 0) {
         await db.catalog.update(title_uuid, { manga: updated });
-        goto(`/${$page.params.manga}`);
+        goto(`/${page.params.manga}`);
       } else {
         db.catalog.delete(title_uuid);
         goto('/');
@@ -43,11 +43,11 @@
   }
 </script>
 
-{#if $page.params.manga}
-  <Frame rounded border class="divide-y divide-gray-200 dark:divide-gray-600">
+{#if page.params.manga}
+  <div class="rounded border divide-y divide-gray-200 dark:divide-gray-600">
     <ListgroupItem
-      on:click={() => goto(`/${$page.params.manga}/${volume_uuid}`)}
-      normalClass="py-4"
+      onclick={() => goto(`/${page.params.manga}/${volume_uuid}`)}
+      class="py-4"
     >
       <div
         class:text-green-400={isComplete}
@@ -60,7 +60,7 @@
         <div class="flex gap-2">
           <TrashBinSolid
             class="text-red-400 hover:text-red-500 z-10 poin"
-            on:click={onDeleteClicked}
+            onclick={onDeleteClicked}
           />
           {#if isComplete}
             <CheckCircleSolid />
@@ -68,5 +68,5 @@
         </div>
       </div>
     </ListgroupItem>
-  </Frame>
+  </div>
 {/if}

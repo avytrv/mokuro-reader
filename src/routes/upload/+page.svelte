@@ -1,15 +1,15 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import Loader from '$lib/components/Loader.svelte';
   import { getItems, processFiles } from '$lib/upload';
   import { promptConfirmation, showSnackbar } from '$lib/util';
   import { P, Progressbar } from 'flowbite-svelte';
   import { onMount } from 'svelte';
-  export const BASE_URL = $page.url.searchParams.get('source') || 'https://mokuro.moe/manga';
+  export const BASE_URL = page.url.searchParams.get('source') || 'https://mokuro.moe/manga';
 
-  const manga = $page.url.searchParams.get('manga');
-  const volume = $page.url.searchParams.get('volume');
+  const manga = page.url.searchParams.get('manga');
+  const volume = page.url.searchParams.get('volume');
   const url = `${BASE_URL}/${manga}/${volume}`;
 
   let message = 'Loading...';

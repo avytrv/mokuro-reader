@@ -2,21 +2,21 @@
   import { Navbar, NavBrand } from 'flowbite-svelte';
   import { UserSettingsSolid, UploadSolid, CloudArrowUpOutline } from 'flowbite-svelte-icons';
   import { afterNavigate, goto } from '$app/navigation';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import Settings from './Settings/Settings.svelte';
   import UploadModal from './UploadModal.svelte';
   import Icon from '$lib/assets/icon.webp';
 
-  let settingsHidden = true;
+  let settingsOpen = false;
   let uploadModalOpen = false;
   let isReader = false;
 
   function openSettings() {
-    settingsHidden = false;
+    settingsOpen = true;
   }
 
   afterNavigate(() => {
-    isReader = $page.route.id === '/[manga]/[volume]';
+    isReader = page.route.id === '/[manga]/[volume]';
 
     if (isReader) {
       window.document.body.classList.add('reader');
@@ -35,12 +35,12 @@
       </div>
     </NavBrand>
     <div class="flex md:order-2 gap-5">
-      <UserSettingsSolid class="hover:text-primary-700" on:click={openSettings} />
-      <UploadSolid class="hover:text-primary-700" on:click={() => (uploadModalOpen = true)} />
-      <CloudArrowUpOutline class="hover:text-primary-700" on:click={() => goto('/cloud')} />
+      <UserSettingsSolid class="hover:text-primary-700" onclick={openSettings} />
+      <UploadSolid class="hover:text-primary-700" onclick={() => (uploadModalOpen = true)} />
+      <CloudArrowUpOutline class="hover:text-primary-700" onclick={() => goto('/cloud')} />
     </div>
   </Navbar>
 </div>
 
-<Settings bind:hidden={settingsHidden} />
+<Settings bind:open={settingsOpen} />
 <UploadModal bind:open={uploadModalOpen} />

@@ -4,17 +4,17 @@
 
   import { Button } from 'flowbite-svelte';
 
-  export let hidden = false;
+  export let open = true;
 
   function onClose() {
-    hidden = true;
+    open = false;
     history.back();
   }
 </script>
 
 {#if isReader()}
   <div class="flex flex-col gap-2">
-    <Button color="alternative" on:click={toggleFullScreen}>Toggle fullscreen</Button>
-    <Button color="alternative" on:click={onClose}>Close reader</Button>
+    <Button color="alternative" onclick={toggleFullScreen}>Toggle fullscreen</Button>
+    <Button color="alternative" onclick={onClose}>Close reader</Button>
   </div>
 {/if}

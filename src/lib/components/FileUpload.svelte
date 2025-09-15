@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { A, Fileupload, Label } from 'flowbite-svelte';
+  import { Button } from "flowbite-svelte";
 
   export let files: FileList | undefined = undefined;
   export let onUpload: ((files: FileList) => void) | undefined = undefined;
@@ -26,4 +26,4 @@
   class="hidden"
 />
 
-<A on:click={onClick}><slot>Upload</slot></A>
+<Button onclick={onClick}><slot>Upload</slot></Button>

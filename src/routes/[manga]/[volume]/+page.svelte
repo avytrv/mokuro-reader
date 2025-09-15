@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import Reader from '$lib/components/Reader/Reader.svelte';
   import Timer from '$lib/components/Reader/Timer.svelte';
   import { initializeVolume, settings, startCount, volumeSettings, volumes } from '$lib/settings';
   import { onMount } from 'svelte';
 
-  const volumeId = $page.params.volume;
+  const volumeId = page.params.volume as string;
   let count: undefined | number = undefined;
 
   onMount(() => {

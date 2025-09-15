@@ -310,18 +310,18 @@
         in your Google Drive.
       </p>
       <div class="flex flex-col gap-4 w-full max-w-3xl">
-        <Button color="blue" on:click={createPicker}>Download manga</Button>
+        <Button color="blue" onclick={createPicker}>Download manga</Button>
         <div class="flex-col gap-2 flex">
           <Button
             color="dark"
-            on:click={() => promptConfirmation('Upload volume data?', onUploadVolumeData)}
+            onclick={() => promptConfirmation('Upload volume data?', onUploadVolumeData)}
           >
             Upload volume data
           </Button>
           {#if volumeDataId}
             <Button
               color="alternative"
-              on:click={() =>
+              onclick={() =>
                 promptConfirmation('Download and overwrite volume data?', onDownloadVolumeData)}
             >
               Download volume data
@@ -331,14 +331,14 @@
         <div class="flex-col gap-2 flex">
           <Button
             color="dark"
-            on:click={() => promptConfirmation('Upload profiles?', onUploadProfiles)}
+            onclick={() => promptConfirmation('Upload profiles?', onUploadProfiles)}
           >
             Upload profiles
           </Button>
           {#if profilesId}
             <Button
               color="alternative"
-              on:click={() =>
+              onclick={() =>
                 promptConfirmation('Download and overwrite profiles?', onDownloadProfiles)}
             >
               Download profiles
@@ -351,7 +351,7 @@
     <div class="flex justify-center pt-0 sm:pt-32">
       <button
         class="w-full border rounded-lg border-slate-600 p-10 border-opacity-50 hover:bg-slate-800 max-w-3xl"
-        on:click={signIn}
+        onclick={signIn}
       >
         <div class="flex sm:flex-row flex-col gap-2 items-center justify-center">
           <GoogleSolid size="lg" />

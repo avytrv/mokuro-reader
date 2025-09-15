@@ -43,14 +43,14 @@
     <div class="flex flex-col gap-5">
       <div class="flex gap-1 py-2">
         <Search bind:value={search} />
-        <Button size="sm" color="alternative" on:click={onLayout}>
+        <Button size="sm" color="alternative" onclick={onLayout}>
           {#if $miscSettings.galleryLayout === 'list'}
             <GridOutline />
           {:else}
             <ListOutline />
           {/if}
         </Button>
-        <Button size="sm" color="alternative" on:click={onOrder}>
+        <Button size="sm" color="alternative" onclick={onOrder}>
           <SortOutline />
         </Button>
       </div>

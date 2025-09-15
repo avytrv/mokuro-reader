@@ -5,9 +5,9 @@
   import { Button, Listgroup } from 'flowbite-svelte';
   import { db } from '$lib/catalog/db';
   import { promptConfirmation, zipManga } from '$lib/util';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import type { Volume } from '$lib/types';
-  import { deleteVolume, mangaStats, volumes } from '$lib/settings';
+  import { deleteVolume, mangaStats } from '$lib/settings';
 
   function sortManga(a: Volume, b: Volume) {
     return a.mokuroData.volume.localeCompare(b.mokuroData.volume, undefined, {
@@ -16,7 +16,7 @@
     });
   }
 
-  $: manga = $catalog?.find((item) => item.id === $page.params.manga)?.manga.sort(sortManga);
+  $: manga = $catalog?.find((item) => item.id === page.params.manga)?.manga.sort(sortManga);
 
   $: loading = false;
 
@@ -58,8 +58,8 @@
         </div>
       </div>
       <div class="sm:block flex-col flex gap-2">
-        <Button color="alternative" on:click={onDelete}>Remove manga</Button>
-        <Button color="light" on:click={onExtract} disabled={loading}>
+        <Button color="alternative" onclick={onDelete}>Remove manga</Button>
+        <Button color="light" onclick={onExtract} disabled={loading}>
           {loading ? 'Extracting...' : 'Extract manga'}
         </Button>
       </div>

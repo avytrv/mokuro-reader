@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import { zoomDefault } from '$lib/panzoom';
   import {
     updateProgress,
@@ -10,9 +10,9 @@
   } from '$lib/settings';
   import { AccordionItem, Helper, Toggle } from 'flowbite-svelte';
 
-  const volumeId = $page.params.volume;
+  const volumeId = page.params.volume as string;
 
-  $: settings = $volumeSettings[$page.params.volume];
+  $: settings = $volumeSettings[volumeId];
 
   $: toggles = [
     { key: 'rightToLeft', text: 'Right to left', value: settings.rightToLeft },
@@ -31,11 +31,13 @@
 </script>
 
 <AccordionItem open>
-  <span slot="header">Volume settings</span>
+  {#snippet header()}
+    Volume settings
+  {/snippet}
   <div class="flex flex-col gap-5">
     <Helper>These settings only apply to this volume</Helper>
     {#each toggles as { key, text, value }}
-      <Toggle size="small" checked={value} on:change={() => onChange(key, value)}>{text}</Toggle>
+      <Toggle size="small" checked={value} onchange={() => onChange(key, value)}>{text}</Toggle>
     {/each}
   </div>
 </AccordionItem>
