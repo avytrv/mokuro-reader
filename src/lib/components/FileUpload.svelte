@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { Button } from "flowbite-svelte";
-
   export let files: FileList | undefined = undefined;
   export let onUpload: ((files: FileList) => void) | undefined = undefined;
 
@@ -21,9 +19,9 @@
   type="file"
   bind:files
   bind:this={input}
-  on:change={handleChange}
+  onchange={handleChange}
   {...$$restProps}
   class="hidden"
 />
 
-<Button onclick={onClick}><slot>Upload</slot></Button>
+<button class="hover:underline dark:text-primary-500" onclick={onClick}><slot>Upload</slot></button>

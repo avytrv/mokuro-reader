@@ -122,18 +122,7 @@
     </Accordion>
     <Dropzone
       id="dropzone"
-      ondrop={dropHandle}
-      ondragover={(event) => {
-        event.preventDefault();
-        activeStyle = highlightStyle;
-      }}
-      ondragleave={(event) => {
-        event.preventDefault();
-        activeStyle = defaultStyle;
-      }}
-      onclick={(event) => {
-        event.preventDefault();
-      }}
+      onDrop={dropHandle}
       class={activeStyle}
     >
       <svg
@@ -157,7 +146,7 @@
         </p>
       {:else if draggedFiles && draggedFiles.length > 0}
         <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-          Upload {draggedFiles.length} hih
+          Upload {draggedFiles.length}
           {draggedFiles.length > 1 ? 'files' : 'file'}?
         </p>
       {:else if loading}

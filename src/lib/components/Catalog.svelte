@@ -42,16 +42,30 @@
   {#if $catalog.length > 0}
     <div class="flex flex-col gap-5">
       <div class="flex gap-1 py-2">
-        <Search bind:value={search} />
-        <Button size="sm" color="alternative" onclick={onLayout}>
+        <Search
+          bind:value={search}
+          size="md"
+          clearable={true}
+          clearableClass="dark:hover:text-white"
+          clearableOnClick={() => (search = '')}
+          inputClass="text-base py-2" />
+        <Button
+          size="xs"
+          color="alternative"
+          class="dark:text-gray-400 dark:focus:text-white dark:hover:text-white dark:bg-transparent dark:border-gray-600 dark:hover:bg-transparent dark:hover:border-gray-700"
+          onclick={onLayout}>
           {#if $miscSettings.galleryLayout === 'list'}
-            <GridOutline />
+            <GridOutline size="lg" />
           {:else}
-            <ListOutline />
+            <ListOutline size="lg" />
           {/if}
         </Button>
-        <Button size="sm" color="alternative" onclick={onOrder}>
-          <SortOutline />
+        <Button
+          size="xs"
+          color="alternative"
+          class="dark:text-gray-400 dark:focus:text-white dark:hover:text-white dark:bg-transparent dark:border-gray-600 dark:hover:bg-transparent dark:hover:border-gray-700"
+          onclick={onOrder}>
+          <SortOutline size="lg" />
         </Button>
       </div>
       {#if search && sortedCatalog.length === 0}

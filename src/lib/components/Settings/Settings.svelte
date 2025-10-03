@@ -47,9 +47,9 @@
   bind:open
   id="settings"
 >
-  <div class="flex items-center">
+  <div class="flex items-center dark:text-white">
     <h5 id="drawer-label" class="inline-flex items-center mb-4 text-base font-semibold">
-      <UserSettingsSolid class="w-4 h-4 mr-2.5" />Settings
+      <UserSettingsSolid class="mr-2" size="lg" />Settings
     </h5>
   </div>
   <div class="flex flex-col gap-5">

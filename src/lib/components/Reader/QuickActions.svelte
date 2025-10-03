@@ -51,11 +51,11 @@
 
 {#if $settings.quickActions}
   <SpeedDialTrigger
-    class="absolute end-3 bottom-3 z-50" />
+    class="absolute end-3 bottom-3 z-50"
+    color="dark" />
   <SpeedDial
     tooltip="none"
     trigger="click"
-    color="transparent"
   >
     {#if $settings.ankiConnectSettings.enabled}
       <SpeedDialButton name={src2 ? '1' : undefined} onclick={() => onUpdateCard(src1)}>

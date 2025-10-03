@@ -9,7 +9,7 @@
   {#snippet header()}
     About
   {/snippet}
-  <div class="flex flex-col gap-5">
+  <div class="flex flex-col gap-5 dark:text-gray-400">
     <div class="flex flex-row justify-between">
       <p class="font-semibold">Mokuro reader {READER_VERSION} <Badge>BETA</Badge></p>
       <a

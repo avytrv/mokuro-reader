@@ -56,7 +56,7 @@
           zoomSpeed={0.5}
           maxZoom={10}
           image={$cropperStore?.image}
-          on:cropcomplete={onCropComplete}
+          oncropcomplete={onCropComplete}
         />
       </div>
       {#if $settings.ankiConnectSettings.grabSentence && $cropperStore?.sentence}

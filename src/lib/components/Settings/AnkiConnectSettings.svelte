@@ -32,12 +32,12 @@
     Anki Connect
   {/snippet}
   <div class="flex flex-col gap-5">
-    <Helper
+    <Helper class="dark:text-gray-300"
       >For anki connect integration to work, you must add the reader (<code class="text-primary-500"
         >{page.url.origin}</code
       >) to your anki connect <b class="text-primary-500">webCorsOriginList</b> list</Helper
     >
-    <Helper>
+    <Helper class="dark:text-gray-300">
       To trigger the anki connect integration, double click or right click (long press on mobile)
       any text box.
     </Helper>
@@ -96,8 +96,8 @@
         />
       </Label>
     </div>
-    <hr>
-    <h4>Quality Settings</h4>
+    <hr class="dark:text-gray-400">
+    <h4 class="dark:text-gray-400">Quality Settings</h4>
     <Helper>Allows you to customize the file size stored on your devices</Helper>
     <div>
       <Label>Max Height (0 = Ignore; 200 Recommended):</Label>

@@ -7,7 +7,7 @@
   {#snippet header()}
     Stats
   {/snippet}
-  <div>
+  <div class="dark:text-gray-400">
     <p>Completed volumes: {$totalStats?.completed || 0}</p>
     <p>Pages read: {$totalStats?.pagesRead || 0}</p>
     <p>Characters read: {$totalStats?.charsRead || 0}</p>

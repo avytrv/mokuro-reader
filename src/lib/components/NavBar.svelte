@@ -27,17 +27,17 @@
 </script>
 
 <div class="relative z-10">
-  <Navbar hidden={isReader}>
+  <Navbar hidden={isReader} class="dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:divide-gray-700">
     <NavBrand href="/">
       <div class="flex flex-row gap-2 items-center">
         <img src={Icon} alt="icon" class="w-[32px] h-[32px]" />
         <span class="text-xl font-semibold dark:text-white">Mokuro</span>
       </div>
     </NavBrand>
-    <div class="flex md:order-2 gap-5">
-      <UserSettingsSolid class="hover:text-primary-700" onclick={openSettings} />
-      <UploadSolid class="hover:text-primary-700" onclick={() => (uploadModalOpen = true)} />
-      <CloudArrowUpOutline class="hover:text-primary-700" onclick={() => goto('/cloud')} />
+    <div class="flex md:order-2 gap-3">
+      <UserSettingsSolid size="lg" class="hover:text-primary-700" onclick={openSettings} />
+      <UploadSolid size="lg" class="hover:text-primary-700" onclick={() => (uploadModalOpen = true)} />
+      <CloudArrowUpOutline size="lg" class="hover:text-primary-700" onclick={() => goto('/cloud')} />
     </div>
   </Navbar>
 </div>

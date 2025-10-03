@@ -18,7 +18,7 @@
     ChevronRightOutline
   } from 'flowbite-svelte-icons';
   import Cropper from './Cropper.svelte';
-  import { page as pageStore } from '$app/stores';
+  import { page as pageStore } from '$app/state';
   import SettingsButton from './SettingsButton.svelte';
   import { getCharCount } from '$lib/util/count-chars';
   import QuickActions from './QuickActions.svelte';
@@ -29,8 +29,8 @@
   export let volumeSettings: VolumeSettings;
 
   $: volume = $catalog
-    ?.find((item) => item.id === $pageStore.params.manga)
-    ?.manga.find((item) => item.mokuroData.volume_uuid === $pageStore.params.volume);
+    ?.find((item) => item.id === pageStore.params.manga)
+    ?.manga.find((item) => item.mokuroData.volume_uuid === pageStore.params.volume);
 
   $: pages = volume?.mokuroData.pages || [];
 
